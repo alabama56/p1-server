@@ -1,7 +1,9 @@
 import { PoolConfig, createPool, MysqlError, PoolConnection } from 'mysql';
 import { isArray } from 'lodash';
 
-export default () => {};
+export default () => {
+    console.log(process.env.HOST);
+};
 
 const poolConfig: PoolConfig = {
     host: process.env.HOST,

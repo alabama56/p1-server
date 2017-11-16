@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql_1 = require("mysql");
 const lodash_1 = require("lodash");
-exports.default = () => { };
+exports.default = () => {
+    console.log(process.env.HOST);
+};
 const poolConfig = {
     host: process.env.HOST,
     user: process.env.USER,
