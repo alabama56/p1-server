@@ -8,5 +8,5 @@ const router = express_1.Router();
 router
     .use('/users', users_1.default)
     .use('/chirps', chirps_1.default)
-    .use('/folowers', followers_1.default);
+    .use('/followers', followers_1.default);
 exports.default = router;

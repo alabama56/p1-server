@@ -1,44 +1,26 @@
-import { rows, row, empty, rowsets } from "./base.proc";
+import { rows, row, empty, rowsets, crud } from "./base.proc";
+import { BY, ALL, SQL_GET } from "./base.proc"
+import { pluralize } from "../middleware/utils.mw";
+import USER_MODEL_NAME from "./users.proc"
 
+let MODEL_NAME = 'Chirp';
 
-const all = () => {
-    return rows("spGetChirps");
+const additional_GetFollowing = (MODEL_NAME: string) => {
+    return (...args: Array<any>) => {
+        return rows(`${SQL_GET}Following${MODEL_NAME}`, args)
+    };
 };
 
-const allByUser = (id: number) => {
-    return rowsets("spGetChirpsByUser", [id]);
+const additional_GetByUser = (MODEL_NAME: string) => {
+    return (...args: Array<any>) => {
+        return rows(`${SQL_GET}${MODEL_NAME}${BY}${USER_MODEL_NAME}`, args)
+    };
 };
 
-const allByFollower = (userid: number) => {
-    return rows("spGetFollowingChirps", [userid]);
-}
 
-const read = (id: number) => {
-    return row("spGetChirp", [id]);
+const additionalProcedures = {
+    GetFollowing: additional_GetFollowing(pluralize(MODEL_NAME)),
+    GetByUser: additional_GetByUser(MODEL_NAME)
 };
 
-const destroy = (id: number) => {
-    return empty("spDeleteChirp", [id]);
-};
-
-const create = (userid: number, message: string, img: string) => {
-    return row("spInsertChirp", [userid, message, img]);
-};
-
-const update = (id: number, userid: number, message: string, img: string) => {
-    return empty("spUpdateChirp", [id, userid, message, img]);
-};
-
-export default {
-    all,                
-    read,
-    destroy,
-    create,
-    update,
-    allByUser, 
-    allByFollower
-};
-
-// p_user_id INT,
-// p_message VARCHAR(280),
-// p_img VARCHAR(280)
+export const { all, create, read, update, destroy, GetFollowing, GetByUser} = crud(MODEL_NAME, additionalProcedures);

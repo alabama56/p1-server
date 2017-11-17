@@ -1,32 +1,8 @@
-import { rows, row, empty } from "./base.proc";
+import { rows, row, empty, crud } from "./base.proc";
 
+const MODEL_NAME = 'User';
 
-const all = () => {
-    return rows("spGetUsers");
-};
+export default MODEL_NAME;
 
-const read = (id: number) => {
-    return row("spGetUser", [id]);
-};
-
-const destroy = (id: number) => {
-    return empty("spDeleteUser", [id]);
-};
-
-const create = (name: string, username: string, email: string, password: string, age: number, tagline: string, pro_img: string, background_img: string) => {
-    return row("spInsertUser", [name, username, email, password, age, tagline, pro_img, background_img]);
-};
-
-const update = (id: number, name: string, username: string, email: string, password: string, age: number, tagline: string, pro_img: string, background_img: string) => {
-    return empty("spUpdateUser", [id, name, username, email, password, age, tagline, pro_img, background_img]);
-}
-
-export default {
-    all,
-    read,
-    destroy,
-    create,
-    update
-};
-
+export const { all, create, read, update, destroy } = crud(MODEL_NAME);
 

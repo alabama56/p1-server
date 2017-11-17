@@ -1,15 +1,5 @@
-import { rows, row, empty } from "./base.proc";
+import { rows, row, empty, crud } from "./base.proc";
 
+const MODEL_NAME = 'Follower';
 
-const create = (follower_id: number, following_id: number) => {
-    return empty ('spInsertFollower', [follower_id, following_id])
-}
-
-const destroy = (follower_id: number, following_id: number) => {
-    return empty ('spDeleteFollower', [follower_id, following_id])
-}
-
-export default {
-    create,
-    destroy
-}
+export const { create, destroy } = crud(MODEL_NAME);

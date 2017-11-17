@@ -9,6 +9,6 @@ const router: Router = Router();
 router
     .use('/users', users)
     .use('/chirps', chirps)
-    .use('/folowers', followers)
+    .use('/followers', followers)
 
 export default router;
