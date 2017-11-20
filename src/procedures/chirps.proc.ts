@@ -13,7 +13,7 @@ const additional_GetFollowing = (MODEL_NAME: string) => {
 
 const additional_GetByUser = (MODEL_NAME: string) => {
     return (...args: Array<any>) => {
-        return rows(`${SQL_GET}${MODEL_NAME}s${BY}${USER_MODEL_NAME}`, args)
+        return rowsets(`${SQL_GET}${pluralize(MODEL_NAME)}${BY}${USER_MODEL_NAME}`, args)
     };
 };
 

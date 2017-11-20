@@ -15,6 +15,7 @@ export const READ = 'read';
 export const UPDATE = 'update';
 export const DESTROY = 'destroy';
 
+
 export const rows = (procedureName: string, args: Array<any> = []) => {
     return procedure(procedureName, args)
         .then((rows) => {
