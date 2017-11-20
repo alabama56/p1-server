@@ -12,7 +12,11 @@ const additional_GetFollowing = (MODEL_NAME) => {
 };
 const additional_GetByUser = (MODEL_NAME) => {
     return (...args) => {
+<<<<<<< HEAD
         return base_proc_1.rows(`${base_proc_2.SQL_GET}${MODEL_NAME}${base_proc_2.BY}${users_proc_1.default}`, args);
+=======
+        return base_proc_1.rows(`${base_proc_2.SQL_GET}${MODEL_NAME}s${base_proc_2.BY}${users_proc_1.default}`, args);
+>>>>>>> 04b3a1093a652b566d27f512d038ba2d95cd02da
     };
 };
 const additionalProcedures = {

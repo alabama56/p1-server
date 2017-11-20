@@ -13,7 +13,7 @@ const additional_GetFollowing = (MODEL_NAME: string) => {
 
 const additional_GetByUser = (MODEL_NAME: string) => {
     return (...args: Array<any>) => {
-        return rows(`${SQL_GET}${MODEL_NAME}${BY}${USER_MODEL_NAME}`, args)
+        return rows(`${SQL_GET}${MODEL_NAME}s${BY}${USER_MODEL_NAME}`, args)
     };
 };
 
@@ -23,4 +23,4 @@ const additionalProcedures = {
     GetByUser: additional_GetByUser(MODEL_NAME)
 };
 
-export const { all, create, read, update, destroy, GetFollowing, GetByUser} = crud(MODEL_NAME, additionalProcedures);
+export const { all, create, read, update, destroy, GetFollowing, GetByUser } = crud(MODEL_NAME, additionalProcedures);
