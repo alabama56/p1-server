@@ -10,7 +10,6 @@ exports.all = (req, res, next) => {
 exports.allByUser = (req, res, next) => {
     procedures.GetByUser(+req.params.id)
         .then((sets) => {
-        console.log(sets);
         const chirps = sets[0];
         const count = sets[1][0];
         res.json(Object.assign({ body: chirps }, count));

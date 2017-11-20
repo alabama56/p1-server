@@ -21,8 +21,8 @@ exports.rows = (procedureName, args = []) => {
 };
 exports.row = (procedureName, args = []) => {
     return index_1.procedure(procedureName, args)
-        .then((rows) => {
-        return rows[0][0];
+        .then((row) => {
+        return row[0][0];
     });
 };
 exports.empty = (procedureName, args = []) => {

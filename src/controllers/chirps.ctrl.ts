@@ -13,7 +13,6 @@ export const all = (req: Request, res: Response, next: NextFunction) => {
 export const allByUser = (req: Request, res: Response, next: NextFunction) => {
     procedures.GetByUser(+req.params.id)
         .then((sets: any) => {
-            console.log(sets);
             const chirps = sets[0]
             const count = sets[1][0]
             res.json({

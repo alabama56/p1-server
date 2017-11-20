@@ -25,8 +25,8 @@ export const rows = (procedureName: string, args: Array<any> = []) => {
 
 export const row = (procedureName: string, args: Array<any> = []) => {
     return procedure(procedureName, args)
-        .then((rows) => {
-            return rows[0][0];
+        .then((row) => {
+            return row[0][0];
         });
 };
 
