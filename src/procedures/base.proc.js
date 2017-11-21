@@ -35,8 +35,8 @@ exports.rowsets = (procedureName, args = []) => {
     return index_1.procedure(procedureName, args);
 };
 const all = (MODEL_NAME) => {
-    return () => {
-        return exports.rows(`${exports.SQL_GET}${MODEL_NAME}`);
+    return (...args) => {
+        return exports.rows(`${exports.SQL_GET}${MODEL_NAME}`, args);
     };
 };
 const read = (MODEL_NAME) => {
