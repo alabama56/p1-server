@@ -16,5 +16,11 @@ export const destroy = (req: Request, res: Response, next: NextFunction) => {
         })
 }
 
+export const all = (req: Request, res: Response, next: NextFunction) => {
+    procedures.all(+req.params.id)
+        .then((sets: any) => {
+            res.json(sets);
+        })
+}
 
 

@@ -13,3 +13,9 @@ exports.destroy = (req, res, next) => {
         res.json(sets);
     });
 };
+exports.all = (req, res, next) => {
+    procedures.all(+req.params.id)
+        .then((sets) => {
+        res.json(sets);
+    });
+};

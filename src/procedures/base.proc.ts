@@ -43,8 +43,8 @@ export const rowsets = (procedureName: string, args: Array<any> = []): Promise<A
 
 
 const all = (MODEL_NAME: string): () => Promise<Array<any>> => {
-    return (): Promise<Array<any>> => {
-        return rows(`${SQL_GET}${MODEL_NAME}`);
+    return (...args: Array<any>): Promise<Array<any>> => {
+        return rows(`${SQL_GET}${MODEL_NAME}`, args);
     };
 };
 
