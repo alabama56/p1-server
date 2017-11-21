@@ -14,7 +14,7 @@ exports.destroy = (req, res, next) => {
     });
 };
 exports.all = (req, res, next) => {
-    procedures.all(+req.params.id)
+    procedures.getFollowers(+req.params.id)
         .then((sets) => {
         res.json(sets);
     });

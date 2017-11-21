@@ -5,7 +5,7 @@ const router = Router();
 
 router
     .post('/', create )
-    .delete('/', destroy)
+    .put('/', destroy)
     .get('/:id', all)
 
 
