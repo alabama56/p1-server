@@ -41,6 +41,6 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 export const update = (req: Request, res: Response, next: NextFunction) => {
     procedures.update(+req.params.id, req.body.name, req.body.username, req.body.email, req.body.password, req.body.age, req.body.tagline, req.body.pro_img, req.body.background_img)
     .then((sets: any) => {
-        res.json(sets);
+        res.sendStatus(204);
     })
 }
