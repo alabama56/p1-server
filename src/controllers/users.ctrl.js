@@ -33,6 +33,6 @@ exports.create = (req, res, next) => {
 exports.update = (req, res, next) => {
     procedures.update(+req.params.id, req.body.name, req.body.username, req.body.email, req.body.password, req.body.age, req.body.tagline, req.body.pro_img, req.body.background_img)
         .then((sets) => {
-        res.json(sets);
+        res.sendStatus(204);
     });
 };
