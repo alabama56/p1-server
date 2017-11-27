@@ -8,7 +8,7 @@ exports.all = (req, res, next) => {
     });
 };
 exports.allByUser = (req, res, next) => {
-    procedures.GetByUser(+req.params.id)
+    procedures.getByUser(+req.params.id)
         .then((sets) => {
         const chirps = sets[0];
         const count = sets[1][0];
@@ -16,7 +16,7 @@ exports.allByUser = (req, res, next) => {
     });
 };
 exports.allByFollower = (req, res, next) => {
-    procedures.GetFollowing(+req.params.id)
+    procedures.getFollowing(+req.params.id)
         .then((sets) => {
         res.json(sets);
     });
@@ -30,17 +30,17 @@ exports.read = (req, res, next) => {
 exports.destroy = (req, res, next) => {
     procedures.destroy(+req.params.id)
         .then((sets) => {
-        res.json(sets);
+        res.sendStatus(204);
     });
 };
 exports.create = (req, res, next) => {
-    procedures.create(req.body.user_id, req.body.message, req.body.img)
+    procedures.create(req.body.user_id, req.body.message)
         .then((sets) => {
         res.json(sets);
     });
 };
 exports.update = (req, res, next) => {
-    procedures.update(req.body.id, req.body.user_id, req.body.message, req.body.img)
+    procedures.update(req.body.id, req.body.user_id, req.body.message)
         .then((sets) => {
         res.json(sets);
     });

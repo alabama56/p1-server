@@ -13,6 +13,7 @@ exports.CREATE = 'create';
 exports.READ = 'read';
 exports.UPDATE = 'update';
 exports.DESTROY = 'destroy';
+exports.EMAIL = 'Email';
 exports.rows = (procedureName, args = []) => {
     return index_1.procedure(procedureName, args)
         .then((rows) => {
@@ -59,6 +60,12 @@ const update = (MODEL_NAME) => {
         return exports.empty(`${exports.SQL_UPDATE}${MODEL_NAME}`, args);
     };
 };
-exports.crud = (MODEL_NAME, additionalProcedures) => {
-    return Object.assign({ all: all(utils_mw_1.pluralize(MODEL_NAME)), create: create(MODEL_NAME), read: read(MODEL_NAME), update: update(MODEL_NAME), destroy: destroy(MODEL_NAME) }, additionalProcedures);
+exports.crud = (MODEL_NAME) => {
+    return {
+        all: all(utils_mw_1.pluralize(MODEL_NAME)),
+        create: create(MODEL_NAME),
+        read: read(MODEL_NAME),
+        update: update(MODEL_NAME),
+        destroy: destroy(MODEL_NAME)
+    };
 };

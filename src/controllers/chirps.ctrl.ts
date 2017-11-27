@@ -11,7 +11,7 @@ export const all = (req: Request, res: Response, next: NextFunction) => {
 }
 
 export const allByUser = (req: Request, res: Response, next: NextFunction) => {
-    procedures.GetByUser(+req.params.id)
+    procedures.getByUser(+req.params.id)
         .then((sets: any) => {
             const chirps = sets[0]
             const count = sets[1][0]
@@ -23,7 +23,7 @@ export const allByUser = (req: Request, res: Response, next: NextFunction) => {
 }
 
 export const allByFollower = (req: Request, res: Response, next: NextFunction) => {
-    procedures.GetFollowing(+req.params.id)
+    procedures.getFollowing(+req.params.id)
         .then((sets: any) => {
             res.json(sets);
         })
@@ -39,19 +39,19 @@ export const read = (req: Request, res: Response, next: NextFunction) => {
 export const destroy = (req: Request, res: Response, next: NextFunction) => {
     procedures.destroy(+req.params.id)
         .then((sets: any) => {
-            res.json(sets);
+            res.sendStatus(204);
         })
 }
 
 export const create = (req: Request, res: Response, next: NextFunction) => {
-    procedures.create(req.body.user_id, req.body.message, req.body.img)
+    procedures.create(req.body.user_id, req.body.message)
         .then((sets: any) => {
             res.json(sets);
         })
 }
 
 export const update = (req: Request, res: Response, next: NextFunction) => {
-    procedures.update(req.body.id, req.body.user_id, req.body.message, req.body.img)
+    procedures.update(req.body.id, req.body.user_id, req.body.message)
     .then((sets: any) => {
         res.json(sets);
     })

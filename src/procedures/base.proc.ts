@@ -14,6 +14,7 @@ export const CREATE = 'create';
 export const READ = 'read';
 export const UPDATE = 'update';
 export const DESTROY = 'destroy';
+export const EMAIL = 'Email';
 
 
 export const rows = (procedureName: string, args: Array<any> = []) => {
@@ -73,14 +74,13 @@ const update = (MODEL_NAME: string) => {
 };
 
 
-export const crud = (MODEL_NAME: string, additionalProcedures?: any) => {
+export const crud = (MODEL_NAME: string) => {
     return {
         all: all(pluralize(MODEL_NAME)),
         create: create(MODEL_NAME),
         read: read(MODEL_NAME),
         update: update(MODEL_NAME),
-        destroy: destroy(MODEL_NAME),
-        ...additionalProcedures
+        destroy: destroy(MODEL_NAME)
 
     }
 };
