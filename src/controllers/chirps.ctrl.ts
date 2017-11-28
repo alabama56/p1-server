@@ -53,7 +53,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 export const update = (req: Request, res: Response, next: NextFunction) => {
     procedures.update(req.body.id, req.body.user_id, req.body.message)
     .then((sets: any) => {
-        res.json(sets);
+        res.sendStatus(204);
     })
 }
 

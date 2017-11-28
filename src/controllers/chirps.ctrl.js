@@ -42,6 +42,6 @@ exports.create = (req, res, next) => {
 exports.update = (req, res, next) => {
     procedures.update(req.body.id, req.body.user_id, req.body.message)
         .then((sets) => {
-        res.json(sets);
+        res.sendStatus(204);
     });
 };
